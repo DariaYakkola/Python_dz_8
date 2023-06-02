@@ -21,11 +21,13 @@ def delete() -> None:
 def change() -> None:
     with open('book.txt', 'r', encoding='utf-8') as file:
         data = file.read().split('\n')
-    contact_to_find = input('Введите данные контакта: ')
-    contact_to_find = search(data, contact_to_find)
-    fio = input('Введите новое ФИО: ')
-    phone_num = input('Введите новый номер телефона: ')
-    data[data.index(contact_to_find)] = f'{fio} | {phone_num}'
-    print('Новые данные добавлены')
+    for index, contact in enumerate(data):
+        contact_to_find = input('Введите данные контакта: ')
+        contact_to_find = search(data, contact_to_find)
+        fio = input('Введите новое ФИО: ')
+        phone_num = input('Введите новый номер телефона: ')
+        contact_update = f'{fio} | {phone_num}'
+        data[index] = contact_update
+        print('Новые данные добавлены')
     with open('book.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(data))
