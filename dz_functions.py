@@ -21,7 +21,7 @@ def delete() -> None:
 def change() -> None:
     with open('book.txt', 'r', encoding='utf-8') as file:
         data = file.read().split('\n')
-    for index, contact in enumerate(data):
+    for index, contact_to_find in enumerate(data):
         contact_to_find = input('Введите данные контакта: ')
         contact_to_find = search(data, contact_to_find)
         fio = input('Введите новое ФИО: ')
