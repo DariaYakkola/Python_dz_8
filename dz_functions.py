@@ -1,4 +1,5 @@
 def search(book: list[str], info: str) -> list[str]:
+    book = book.split('\n')
     result = [contact for contact in book if info in contact]
     while len(result) != 1:
         info = input('Уточните данные контакта: ')
@@ -12,6 +13,7 @@ def delete() -> None:
     contact_to_find = input('Введите данные контакта: ')
     contact_to_find = search(data, contact_to_find)
     data.remove(contact_to_find)
+    print('Контакт удален!')
     with open('book.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(data))
 
@@ -24,5 +26,6 @@ def change() -> None:
     fio = input('Введите новое ФИО: ')
     phone_num = input('Введите новый номер телефона: ')
     data[data.index(contact_to_find)] = f'{fio} | {phone_num}'
+    print('Новые данные добавлены')
     with open('book.txt', 'w', encoding='utf-8') as file:
         file.write('\n'.join(data))
